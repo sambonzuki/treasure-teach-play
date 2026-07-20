@@ -145,7 +145,7 @@ function ProductPage() {
             <div className="mt-8 rounded-3xl border border-navy/5 bg-white p-6">
               <h3 className="font-display text-xl font-extrabold text-navy">Skills covered</h3>
               <ul className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {product.skills.map((s) => (
+                {product.skills.map((s: string) => (
                   <li key={s} className="flex items-center gap-2 text-navy/80">
                     <span className="text-emerald">✓</span> {s}
                   </li>
