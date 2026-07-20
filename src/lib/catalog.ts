@@ -1,0 +1,216 @@
+import multiplicationImg from "@/assets/product-multiplication.jpg";
+import additionImg from "@/assets/product-addition.jpg";
+import bundleImg from "@/assets/product-bundle.jpg";
+import fractionsImg from "@/assets/product-fractions.jpg";
+import timesTablesImg from "@/assets/product-times-tables.jpg";
+import moneyImg from "@/assets/product-money.jpg";
+import timeImg from "@/assets/product-time.jpg";
+
+export type Product = {
+  slug: string;
+  title: string;
+  subject: string;
+  topic: string;
+  age: string;
+  year: string;
+  difficulty: "Easy" | "Medium" | "Challenge";
+  theme: string;
+  pages: number;
+  price: number;
+  salePrice?: number;
+  badge?: "Best Seller" | "New" | "Sale" | "Bundle" | "Teacher Favourite";
+  image: string;
+  rating: number;
+  reviews: number;
+  skills: string[];
+  description: string;
+};
+
+export const products: Product[] = [
+  {
+    slug: "lost-island-multiplication",
+    title: "The Lost Island Multiplication Quest",
+    subject: "Multiplication",
+    topic: "Times Tables",
+    age: "7–9",
+    year: "Year 3–4",
+    difficulty: "Medium",
+    theme: "Pirate",
+    pages: 24,
+    price: 7.5,
+    badge: "Best Seller",
+    image: multiplicationImg,
+    rating: 5.0,
+    reviews: 128,
+    skills: ["2×–12× tables", "Word problems", "Missing numbers", "Arrays"],
+    description: "Follow Captain Sum across the Lost Island to master multiplication through 24 pages of hand-illustrated puzzles, quests and colour-by-answer challenges.",
+  },
+  {
+    slug: "coral-reef-addition",
+    title: "Coral Reef Addition Adventures",
+    subject: "Addition",
+    topic: "Number Bonds",
+    age: "5–7",
+    year: "Year 1–2",
+    difficulty: "Easy",
+    theme: "Ocean",
+    pages: 18,
+    price: 5.95,
+    badge: "New",
+    image: additionImg,
+    rating: 4.9,
+    reviews: 42,
+    skills: ["Number bonds to 20", "Adding within 100", "Missing addends"],
+    description: "Dive into the coral reef and add your way through a shimmering underwater world of fish, shells and sea-creature puzzles.",
+  },
+  {
+    slug: "treasure-chest-fractions",
+    title: "Treasure Chest Fractions",
+    subject: "Fractions",
+    topic: "Halves & Quarters",
+    age: "8–10",
+    year: "Year 4–5",
+    difficulty: "Challenge",
+    theme: "Pirate",
+    pages: 22,
+    price: 4.5,
+    salePrice: 3.5,
+    badge: "Sale",
+    image: fractionsImg,
+    rating: 4.8,
+    reviews: 67,
+    skills: ["Equivalent fractions", "Comparing fractions", "Fractions of amounts"],
+    description: "Split gold, share loot and compare treasure to master fractions with 22 pages of hands-on pirate maths.",
+  },
+  {
+    slug: "parrot-times-tables",
+    title: "Parrot's Times Tables Practice",
+    subject: "Multiplication",
+    topic: "Times Tables",
+    age: "6–9",
+    year: "Year 2–4",
+    difficulty: "Medium",
+    theme: "Pirate",
+    pages: 30,
+    price: 6.5,
+    badge: "Teacher Favourite",
+    image: timesTablesImg,
+    rating: 4.9,
+    reviews: 214,
+    skills: ["1× to 12×", "Speed drills", "Mixed practice", "Rewards chart"],
+    description: "Squawk your way through every times table with Pip the pirate parrot. Timed drills, mixed challenges and a printable reward chart.",
+  },
+  {
+    slug: "pirate-money-maths",
+    title: "Pirate's Gold Money Maths",
+    subject: "Money",
+    topic: "Coins & Change",
+    age: "6–9",
+    year: "Year 2–4",
+    difficulty: "Medium",
+    theme: "Pirate",
+    pages: 20,
+    price: 5.5,
+    image: moneyImg,
+    rating: 4.7,
+    reviews: 58,
+    skills: ["Recognising coins", "Adding amounts", "Giving change", "Word problems"],
+    description: "Count doubloons, hand out treasure and buy supplies at the pirate market with 20 pages of practical money-maths activities.",
+  },
+  {
+    slug: "compass-time-clocks",
+    title: "Compass Time & Clocks",
+    subject: "Time",
+    topic: "Reading Clocks",
+    age: "5–8",
+    year: "Year 1–3",
+    difficulty: "Easy",
+    theme: "Pirate",
+    pages: 16,
+    price: 4.95,
+    image: timeImg,
+    rating: 4.8,
+    reviews: 39,
+    skills: ["O'clock & half past", "Quarter past & to", "5-minute intervals", "24-hour clock"],
+    description: "Set sail with a golden pocket-watch and learn to tell the time from o'clock to 5-minute intervals across 16 illustrated pages.",
+  },
+];
+
+export const bundles = [
+  {
+    slug: "pirate-maths-collection",
+    title: "The Ultimate Pirate Maths Collection",
+    tagline: "Save 45% — every core skill in one chest",
+    price: 24,
+    original: 45,
+    saving: "45%",
+    includes: ["Addition", "Subtraction", "Multiplication", "Division", "Fractions", "Money", "Time"],
+    image: bundleImg,
+    color: "from-ocean to-navy",
+    pages: 150,
+  },
+  {
+    slug: "year-3-bundle",
+    title: "Year 3 Complete Bundle",
+    tagline: "Everything a Year 3 explorer needs",
+    price: 18,
+    original: 32,
+    saving: "44%",
+    includes: ["Multiplication", "Fractions", "Money", "Measurement"],
+    image: multiplicationImg,
+    color: "from-emerald to-ocean",
+    pages: 110,
+  },
+  {
+    slug: "year-4-bundle",
+    title: "Year 4 Complete Bundle",
+    tagline: "Fluency, reasoning and problem-solving",
+    price: 22,
+    original: 38,
+    saving: "42%",
+    includes: ["Times Tables", "Fractions", "Decimals", "Word Problems"],
+    image: fractionsImg,
+    color: "from-coral to-gold",
+    pages: 130,
+  },
+  {
+    slug: "times-tables-bundle",
+    title: "Times Tables Bundle",
+    tagline: "Every table, drilled to fluency",
+    price: 14,
+    original: 22,
+    saving: "36%",
+    includes: ["2× to 12×", "Speed drills", "Missing numbers", "Reward chart"],
+    image: timesTablesImg,
+    color: "from-gold to-coral",
+    pages: 80,
+  },
+  {
+    slug: "addition-bundle",
+    title: "Addition Mastery Bundle",
+    tagline: "From number bonds to column addition",
+    price: 12,
+    original: 20,
+    saving: "40%",
+    includes: ["Number bonds", "Column addition", "Word problems"],
+    image: additionImg,
+    color: "from-ocean to-emerald",
+    pages: 70,
+  },
+  {
+    slug: "money-time-bundle",
+    title: "Money & Time Bundle",
+    tagline: "Real-world life skills through pirate play",
+    price: 10,
+    original: 16,
+    saving: "37%",
+    includes: ["Coins & change", "Reading clocks", "24-hour time"],
+    image: moneyImg,
+    color: "from-navy to-ocean",
+    pages: 60,
+  },
+];
+
+export function getProductBySlug(slug: string) {
+  return products.find((p) => p.slug === slug);
+}
