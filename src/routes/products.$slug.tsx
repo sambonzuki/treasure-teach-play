@@ -1,8 +1,9 @@
-import { createFileRoute, notFound, Link } from "@tanstack/react-router";
+import { createFileRoute, notFound, Link, useNavigate } from "@tanstack/react-router";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { ProductCard } from "@/components/product-card";
-import { getProductBySlug, products } from "@/lib/catalog";
+import { getProductBySlug, products, bundles } from "@/lib/catalog";
+import { useCart, productToCartItem, bundleToCartItem } from "@/lib/cart";
 
 export const Route = createFileRoute("/products/$slug")({
   loader: ({ params }) => {
@@ -39,6 +40,14 @@ function ProductPage() {
   const { product } = Route.useLoaderData();
   const price = product.salePrice ?? product.price;
   const related = products.filter((p) => p.slug !== product.slug).slice(0, 3);
+  const { add } = useCart();
+  const navigate = useNavigate();
+  const suggestedBundle = bundles[0];
+  const addThis = () => {
+    const item = productToCartItem(product.slug);
+    if (item) add(item);
+  };
+  const addAndGoToCart = () => { addThis(); navigate({ to: "/cart" }); };
 
   return (
     <div className="min-h-dvh bg-warm-white text-navy">
@@ -120,13 +129,33 @@ function ProductPage() {
             </div>
 
             <div className="mt-6 flex flex-col sm:flex-row gap-3">
-              <button className="flex-1 rounded-2xl bg-ocean px-7 py-4 font-display text-lg font-extrabold text-white shadow-xl shadow-ocean/30 transition-transform hover:-translate-y-0.5">
-                Add to cart
-              </button>
-              <button className="flex-1 rounded-2xl bg-gold px-7 py-4 font-display text-lg font-extrabold text-navy shadow-xl shadow-gold/30 transition-transform hover:-translate-y-0.5">
-                Buy now
+              <button onClick={addThis} className="flex-1 rounded-2xl bg-ocean px-7 py-4 font-display text-lg font-extrabold text-white shadow-xl shadow-ocean/30 transition-transform hover:-translate-y-0.5">
+                Add to cart — £{price.toFixed(2)}
               </button>
             </div>
+
+            {/* Bundle deal prompt */}
+            <div className="mt-4 rounded-2xl border-2 border-dashed border-gold bg-gold/10 p-4">
+              <div className="flex items-start gap-3">
+                <div className="text-2xl">💰</div>
+                <div className="flex-1 min-w-0">
+                  <div className="font-display text-base font-extrabold text-navy">
+                    Save {suggestedBundle.saving} with the {suggestedBundle.title}
+                  </div>
+                  <p className="mt-1 text-sm text-navy/70">
+                    Get this pack plus {suggestedBundle.includes.length - 1}+ more for just £{suggestedBundle.price.toFixed(2)} (was £{suggestedBundle.original.toFixed(2)}).
+                  </p>
+                  <button
+                    onClick={() => { const b = bundleToCartItem(suggestedBundle.slug); if (b) add(b); }}
+                    className="mt-2 rounded-full bg-navy px-4 py-2 text-xs font-bold uppercase tracking-wider text-white hover:bg-ocean-deep"
+                  >
+                    Add bundle instead
+                  </button>
+                </div>
+              </div>
+            </div>
+
+
 
             <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-xs">
               {[
