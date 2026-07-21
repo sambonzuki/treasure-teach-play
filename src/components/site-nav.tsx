@@ -1,8 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
+import { useCart } from "@/lib/cart";
 
 export function SiteNav() {
   const [open, setOpen] = useState(false);
+  const { count } = useCart();
   const links = [
     { to: "/shop", label: "Shop" },
     { to: "/bundles", label: "Bundles" },
@@ -53,10 +55,12 @@ export function SiteNav() {
             <button aria-label="Search" className="grid size-10 place-items-center rounded-full border border-navy/10 text-navy transition-colors hover:bg-sand-soft">
               <span aria-hidden>🔍</span>
             </button>
-            <button aria-label="Cart" className="relative grid size-10 place-items-center rounded-full border border-navy/10 text-navy transition-colors hover:bg-sand-soft">
+            <Link to="/cart" aria-label="Cart" className="relative grid size-10 place-items-center rounded-full border border-navy/10 text-navy transition-colors hover:bg-sand-soft">
               <span aria-hidden>🛒</span>
-              <span className="absolute -top-1 -right-1 grid size-5 place-items-center rounded-full bg-coral text-[10px] font-bold text-white">2</span>
-            </button>
+              {count > 0 && (
+                <span className="absolute -top-1 -right-1 grid size-5 place-items-center rounded-full bg-coral text-[10px] font-bold text-white">{count}</span>
+              )}
+            </Link>
             <Link
               to="/shop"
               className="hidden sm:inline-flex rounded-full bg-coral px-5 py-2.5 font-bold text-white shadow-lg shadow-coral/25 transition-transform hover:scale-105"
