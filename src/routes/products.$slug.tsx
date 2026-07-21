@@ -210,7 +210,10 @@ function ProductPage() {
                 <div className="font-display text-3xl font-extrabold text-ocean">
                   £{(price + (related[0].salePrice ?? related[0].price) + (related[1].salePrice ?? related[1].price)).toFixed(2)}
                 </div>
-                <button className="mt-2 rounded-2xl bg-navy px-5 py-2.5 text-sm font-bold text-white hover:bg-ocean-deep">
+                <button
+                  onClick={() => { [product, ...related.slice(0, 2)].forEach((p) => { const it = productToCartItem(p.slug); if (it) add(it); }); }}
+                  className="mt-2 rounded-2xl bg-navy px-5 py-2.5 text-sm font-bold text-white hover:bg-ocean-deep"
+                >
                   Add all three
                 </button>
               </div>
@@ -237,7 +240,7 @@ function ProductPage() {
               <div className="font-bold text-ocean">£{price.toFixed(2)}</div>
             </div>
           </div>
-          <button className="shrink-0 rounded-2xl bg-coral px-5 sm:px-7 py-3 font-display font-extrabold text-white shadow-lg shadow-coral/30 hover:scale-105 transition-transform">
+          <button onClick={addAndGoToCart} className="shrink-0 rounded-2xl bg-coral px-5 sm:px-7 py-3 font-display font-extrabold text-white shadow-lg shadow-coral/30 hover:scale-105 transition-transform">
             Add to cart
           </button>
         </div>
