@@ -5,6 +5,11 @@ import fractionsImg from "@/assets/product-fractions.jpg";
 import timesTablesImg from "@/assets/product-times-tables.jpg";
 import moneyImg from "@/assets/product-money.jpg";
 import timeImg from "@/assets/product-time.jpg";
+import spaceImg from "@/assets/product-space-multiplication.jpg";
+import footballImg from "@/assets/product-football-addition.jpg";
+import dinosaurImg from "@/assets/product-dinosaur-fractions.jpg";
+import fairytaleImg from "@/assets/product-fairytale-time.jpg";
+import bundleAdventuresImg from "@/assets/product-bundle-adventures.jpg";
 
 export type Product = {
   slug: string;
