@@ -16,12 +16,13 @@ export function SiteNav() {
   return (
     <>
       <div className="bg-navy py-2 px-4 text-center text-xs sm:text-sm font-medium tracking-wide text-warm-white">
-        <span className="mr-2">🏴‍☠️</span>
+        <span className="mr-2">✨</span>
         Weekend Flash Sale — Buy 3 bundles, save 40%
         <Link to="/bundles" className="ml-3 text-gold underline decoration-2 underline-offset-4 hover:text-white">
           Grab the deal
         </Link>
       </div>
+
       <nav className="sticky top-0 z-50 border-b border-navy/5 bg-warm-white/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 py-3 sm:py-4">
           <Link to="/" className="group flex min-w-0 items-center gap-2">

@@ -76,8 +76,9 @@ export default function Home() {
               Turn maths practice into an <span className="text-ocean">adventure</span>.
             </h1>
             <p className="mt-6 max-w-xl text-lg sm:text-xl leading-relaxed text-navy/70">
-              Printable pirate-themed maths activities that children aged 5–10 actually enjoy — designed by teachers, loved by parents.
+              Themed printable maths activities — pirates, space, football and more adventures on the way — designed by teachers, loved by children aged 5–10.
             </p>
+
             <div className="mt-8 flex flex-wrap gap-3 sm:gap-4">
               <Link
                 to="/shop"
@@ -273,79 +274,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Loyalty */}
-      <section className="px-4 sm:px-6 py-20 sm:py-24 bg-navy text-white">
-        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2 items-center">
-          <div>
-            <span className="inline-block rounded-full bg-gold/20 px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-gold">
-              Treasure Chest Rewards
-            </span>
-            <h2 className="mt-4 font-display text-3xl sm:text-4xl font-extrabold">Earn coins with every quest</h2>
-            <p className="mt-4 text-white/70 text-lg">
-              Every purchase earns gold coins. Trade them for exclusive downloads, birthday freebies and bigger discounts as you level up.
-            </p>
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
-              {[
-                { tier: "Bronze", coins: "50 coins", perk: "10% off" },
-                { tier: "Silver", coins: "200 coins", perk: "20% off" },
-                { tier: "Gold", coins: "500 coins", perk: "40% off" },
-              ].map((t) => (
-                <div key={t.tier} className="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10">
-                  <div className="font-display text-lg font-extrabold text-gold">{t.tier}</div>
-                  <div className="text-xs text-white/60">{t.coins}</div>
-                  <div className="mt-1 text-sm font-bold">{t.perk}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="relative mx-auto">
-            <div className="animate-float grid size-48 sm:size-64 place-items-center rounded-3xl bg-gradient-to-br from-gold to-coral text-7xl sm:text-8xl shadow-2xl">
-              📦
-            </div>
-            <div className="absolute -top-4 -left-4 animate-float-slow grid size-14 place-items-center rounded-full bg-white text-2xl shadow-xl">🪙</div>
-            <div className="absolute -bottom-3 -right-3 animate-float-slow grid size-14 place-items-center rounded-full bg-white text-2xl shadow-xl">⭐</div>
-          </div>
-        </div>
-      </section>
 
-      {/* Newsletter */}
-      <section className="px-4 sm:px-6 py-20 sm:py-24">
-        <div className="mx-auto flex max-w-6xl flex-col lg:flex-row items-center gap-10 rounded-[36px] border-2 border-gold/30 bg-gold/10 p-8 sm:p-12 lg:p-16">
-          <div className="flex-1">
-            <span className="inline-block rounded-full bg-emerald/20 px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-emerald">
-              Free gift
-            </span>
-            <h2 className="mt-4 font-display text-3xl sm:text-4xl font-extrabold text-navy">
-              Join the crew &amp; get a <span className="text-ocean">FREE Pirate Multiplication Pack</span>
-            </h2>
-            <p className="mt-3 text-navy/70 text-lg">
-              20 pages of pirate-themed times-tables practice, worth £6, delivered to your inbox right away.
-            </p>
-            <form className="mt-6 flex flex-col sm:flex-row gap-3">
-              <input
-                type="email"
-                required
-                placeholder="your@email.com"
-                className="min-w-0 flex-1 rounded-2xl border-2 border-navy/10 bg-white px-5 py-4 text-base outline-none focus:border-ocean"
-              />
-              <button className="rounded-2xl bg-navy px-7 py-4 font-display text-lg font-extrabold text-white hover:bg-ocean-deep">
-                Send my freebie
-              </button>
-            </form>
-            <p className="mt-3 text-xs text-navy/50">No spam ever. Unsubscribe with one click.</p>
-          </div>
-          <div className="relative w-full max-w-xs">
-            <img
-              src={freebieImg}
-              alt="Free pirate multiplication pack next to gold coins"
-              loading="lazy"
-              width={600}
-              height={600}
-              className="w-full rotate-3 rounded-3xl shadow-2xl ring-1 ring-navy/5"
-            />
-          </div>
-        </div>
-      </section>
+
 
       {/* FAQ */}
       <section className="px-4 sm:px-6 py-20 sm:py-24 bg-sand-soft/50">

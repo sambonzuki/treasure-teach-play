@@ -20,7 +20,7 @@ export const Route = createFileRoute("/shop")({
 const ages = ["All", "5–7", "6–9", "7–9", "8–10"];
 const years = ["All", "Year 1–2", "Year 2–4", "Year 3–4", "Year 4–5", "Year 1–3"];
 const subjects = ["All", "Addition", "Multiplication", "Fractions", "Money", "Time"];
-const themes = ["All", "Pirate", "Ocean"];
+const themes = ["All", "Pirate", "Ocean", "Space", "Football", "Dinosaurs", "Fairy Tale"];
 const difficulties = ["All", "Easy", "Medium", "Challenge"];
 const sorts = ["Featured", "Price: Low to High", "Price: High to Low", "Best Rated"] as const;
 
