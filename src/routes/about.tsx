@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
-import heroImg from "@/assets/hero-island.jpg";
+import heroImg from "@/assets/hero-adventures.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({

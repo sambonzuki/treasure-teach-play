@@ -5,6 +5,11 @@ import fractionsImg from "@/assets/product-fractions.jpg";
 import timesTablesImg from "@/assets/product-times-tables.jpg";
 import moneyImg from "@/assets/product-money.jpg";
 import timeImg from "@/assets/product-time.jpg";
+import spaceImg from "@/assets/product-space-multiplication.jpg";
+import footballImg from "@/assets/product-football-addition.jpg";
+import dinosaurImg from "@/assets/product-dinosaur-fractions.jpg";
+import fairytaleImg from "@/assets/product-fairytale-time.jpg";
+import bundleAdventuresImg from "@/assets/product-bundle-adventures.jpg";
 
 export type Product = {
   slug: string;
@@ -134,9 +139,92 @@ export const products: Product[] = [
     skills: ["O'clock & half past", "Quarter past & to", "5-minute intervals", "24-hour clock"],
     description: "Set sail with a golden pocket-watch and learn to tell the time from o'clock to 5-minute intervals across 16 illustrated pages.",
   },
+  {
+    slug: "galactic-multiplication-mission",
+    title: "Galactic Multiplication Mission",
+    subject: "Multiplication",
+    topic: "Times Tables",
+    age: "7–10",
+    year: "Year 3–5",
+    difficulty: "Medium",
+    theme: "Space",
+    pages: 26,
+    price: 7.5,
+    badge: "New",
+    image: spaceImg,
+    rating: 4.9,
+    reviews: 31,
+    skills: ["2×–12× tables", "Arrays", "Word problems", "Speed drills"],
+    description: "Blast off with Cadet Nova and multiply your way across the galaxy through 26 pages of planet-hopping puzzles and rocket-fuel drills.",
+  },
+  {
+    slug: "match-day-addition",
+    title: "Match Day Addition Champions",
+    subject: "Addition",
+    topic: "Column Addition",
+    age: "6–8",
+    year: "Year 2–3",
+    difficulty: "Easy",
+    theme: "Football",
+    pages: 20,
+    price: 5.95,
+    badge: "Teacher Favourite",
+    image: footballImg,
+    rating: 4.8,
+    reviews: 74,
+    skills: ["Column addition", "Scoreboard maths", "Word problems", "Mental strategies"],
+    description: "Score goals, tally the crowd and top the league table with 20 pages of football-themed addition challenges.",
+  },
+  {
+    slug: "jurassic-fractions",
+    title: "Jurassic Fractions Expedition",
+    subject: "Fractions",
+    topic: "Equivalent Fractions",
+    age: "8–10",
+    year: "Year 4–5",
+    difficulty: "Challenge",
+    theme: "Dinosaurs",
+    pages: 24,
+    price: 6.95,
+    image: dinosaurImg,
+    rating: 4.9,
+    reviews: 46,
+    skills: ["Equivalent fractions", "Comparing", "Fractions of amounts", "Simplifying"],
+    description: "Track prehistoric creatures and share fossil finds across 24 pages of Jurassic fraction puzzles.",
+  },
+  {
+    slug: "enchanted-castle-time",
+    title: "Enchanted Castle Time & Clocks",
+    subject: "Time",
+    topic: "Reading Clocks",
+    age: "5–8",
+    year: "Year 1–3",
+    difficulty: "Easy",
+    theme: "Fairy Tale",
+    pages: 18,
+    price: 4.95,
+    badge: "New",
+    image: fairytaleImg,
+    rating: 4.9,
+    reviews: 22,
+    skills: ["O'clock & half past", "Quarter past & to", "5-minute intervals", "Elapsed time"],
+    description: "Climb the enchanted clock tower and learn to tell the time with dragons, dragons and dazzling moonlit puzzles.",
+  },
 ];
 
 export const bundles = [
+  {
+    slug: "all-adventures-collection",
+    title: "The All-Adventures Mega Collection",
+    tagline: "Pirate, space, football & dino — every world in one",
+    price: 32,
+    original: 60,
+    saving: "47%",
+    includes: ["Pirate", "Space", "Football", "Dinosaurs", "Fairy Tale"],
+    image: bundleAdventuresImg,
+    color: "from-navy to-emerald",
+    pages: 200,
+  },
   {
     slug: "pirate-maths-collection",
     title: "The Ultimate Pirate Maths Collection",
