@@ -214,6 +214,18 @@ export const products: Product[] = [
 
 export const bundles = [
   {
+    slug: "all-adventures-collection",
+    title: "The All-Adventures Mega Collection",
+    tagline: "Pirate, space, football & dino — every world in one",
+    price: 32,
+    original: 60,
+    saving: "47%",
+    includes: ["Pirate", "Space", "Football", "Dinosaurs", "Fairy Tale"],
+    image: bundleAdventuresImg,
+    color: "from-navy to-emerald",
+    pages: 200,
+  },
+  {
     slug: "pirate-maths-collection",
     title: "The Ultimate Pirate Maths Collection",
     tagline: "Save 45% — every core skill in one chest",
