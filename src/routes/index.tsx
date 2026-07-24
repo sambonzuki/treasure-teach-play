@@ -12,7 +12,7 @@ export const Route = createFileRoute("/")({
       { title: "Math Adventure Printables — Learning Through Adventure" },
       { name: "description", content: "Turn maths practice into an adventure. Premium printable pirate-themed maths activities children aged 5–10 actually love." },
       { property: "og:title", content: "Math Adventure Printables — Learning Through Adventure" },
-      { property: "og:description", content: "Curriculum-aligned printable maths for parents, teachers and homeschool families. Instant download." },
+      { property: "og:description", content: "Turn maths practice into an adventure. Premium printable pirate-themed maths activities children aged 5–10 actually love." },
     ],
   }),
   component: Home,
