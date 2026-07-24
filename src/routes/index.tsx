@@ -76,7 +76,7 @@ export default function Home() {
               Turn maths practice into an <span className="text-ocean">adventure</span>.
             </h1>
             <p className="mt-6 max-w-xl text-lg sm:text-xl leading-relaxed text-navy/70">
-              Themed printable maths activities — pirates, space, football and more adventures on the way — designed by teachers, loved by children aged 5–10.
+              Themed printable maths activities — pirates, space, unicorns and more adventures on the way — designed by teachers, loved by children aged 5–10.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3 sm:gap-4">
