@@ -220,7 +220,7 @@ export const bundles = [
     price: 32,
     original: 60,
     saving: "47%",
-    includes: ["Pirate", "Space", "Football", "Dinosaurs", "Fairy Tale"],
+    includes: ["Pirate", "Space", "Unicorns", "Fairy Tale"],
     image: bundleAdventuresImg,
     color: "from-navy to-emerald",
     pages: 200,
