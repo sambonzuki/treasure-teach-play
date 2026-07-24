@@ -53,9 +53,9 @@ export function SiteNav() {
           </div>
 
           <div className="flex items-center gap-2 sm:gap-3">
-            <button aria-label="Search" className="grid size-10 place-items-center rounded-full border border-navy/10 text-navy transition-colors hover:bg-sand-soft">
+            <Link to="/shop" aria-label="Search" className="grid size-10 place-items-center rounded-full border border-navy/10 text-navy transition-colors hover:bg-sand-soft">
               <span aria-hidden>🔍</span>
-            </button>
+            </Link>
             <Link to="/cart" aria-label="Cart" className="relative grid size-10 place-items-center rounded-full border border-navy/10 text-navy transition-colors hover:bg-sand-soft">
               <span aria-hidden>🛒</span>
               {count > 0 && (
