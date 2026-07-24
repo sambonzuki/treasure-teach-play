@@ -216,7 +216,7 @@ export const bundles = [
   {
     slug: "all-adventures-collection",
     title: "The All-Adventures Mega Collection",
-    tagline: "Pirate, space, football & dino — every world in one",
+    tagline: "Pirate, space, unicorns & fairy tale — every world in one",
     price: 32,
     original: 60,
     saving: "47%",
