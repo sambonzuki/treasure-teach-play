@@ -6,8 +6,8 @@ import timesTablesImg from "@/assets/product-times-tables.jpg";
 import moneyImg from "@/assets/product-money.jpg";
 import timeImg from "@/assets/product-time.jpg";
 import spaceImg from "@/assets/product-space-multiplication.jpg";
-import footballImg from "@/assets/product-football-addition.jpg";
-import dinosaurImg from "@/assets/product-dinosaur-fractions.jpg";
+
+import unicornImg from "@/assets/product-unicorn-subtraction.jpg";
 import fairytaleImg from "@/assets/product-fairytale-time.jpg";
 import bundleAdventuresImg from "@/assets/product-bundle-adventures.jpg";
 
@@ -158,39 +158,39 @@ export const products: Product[] = [
     description: "Blast off with Cadet Nova and multiply your way across the galaxy through 26 pages of planet-hopping puzzles and rocket-fuel drills.",
   },
   {
-    slug: "match-day-addition",
-    title: "Match Day Addition Champions",
-    subject: "Addition",
-    topic: "Column Addition",
+    slug: "rainbow-unicorn-subtraction",
+    title: "Rainbow Unicorn Subtraction Quest",
+    subject: "Subtraction",
+    topic: "Subtraction within 100",
     age: "6–8",
     year: "Year 2–3",
     difficulty: "Easy",
-    theme: "Football",
-    pages: 20,
+    theme: "Unicorns",
+    pages: 22,
     price: 5.95,
-    badge: "Teacher Favourite",
-    image: footballImg,
-    rating: 4.8,
-    reviews: 74,
-    skills: ["Column addition", "Scoreboard maths", "Word problems", "Mental strategies"],
-    description: "Score goals, tally the crowd and top the league table with 20 pages of football-themed addition challenges.",
+    badge: "New",
+    image: unicornImg,
+    rating: 4.9,
+    reviews: 38,
+    skills: ["Subtraction within 20", "Subtraction within 100", "Missing numbers", "Word problems"],
+    description: "Prance through the enchanted forest with Sparkle the unicorn and master subtraction across 22 pages of rainbow-bright puzzles.",
   },
   {
-    slug: "jurassic-fractions",
-    title: "Jurassic Fractions Expedition",
+    slug: "starlight-unicorn-fractions",
+    title: "Starlight Unicorn Fractions",
     subject: "Fractions",
     topic: "Equivalent Fractions",
     age: "8–10",
     year: "Year 4–5",
     difficulty: "Challenge",
-    theme: "Dinosaurs",
+    theme: "Unicorns",
     pages: 24,
     price: 6.95,
-    image: dinosaurImg,
+    image: unicornImg,
     rating: 4.9,
-    reviews: 46,
+    reviews: 27,
     skills: ["Equivalent fractions", "Comparing", "Fractions of amounts", "Simplifying"],
-    description: "Track prehistoric creatures and share fossil finds across 24 pages of Jurassic fraction puzzles.",
+    description: "Share stardust and split rainbows across 24 pages of unicorn-themed fraction adventures.",
   },
   {
     slug: "enchanted-castle-time",
@@ -220,7 +220,7 @@ export const bundles = [
     price: 32,
     original: 60,
     saving: "47%",
-    includes: ["Pirate", "Space", "Football", "Dinosaurs", "Fairy Tale"],
+    includes: ["Pirate", "Space", "Unicorns", "Fairy Tale"],
     image: bundleAdventuresImg,
     color: "from-navy to-emerald",
     pages: 200,

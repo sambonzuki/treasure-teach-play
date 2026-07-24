@@ -21,7 +21,7 @@ const pillars = [
   { icon: "🎨", title: "Original artwork", body: "No stock cliparts. Every illustration is hand-drawn by our in-house design crew." },
   { icon: "⚡", title: "Instant downloads", body: "PDF delivered the moment you check out. No shipping fees, no delays." },
   { icon: "💎", title: "Premium quality", body: "Print-shop-ready files, tested on home and school printers so what you see is what you get." },
-  { icon: "🌱", title: "Made to grow with you", body: "New collections monthly — pirate, space, dinosaurs, jungle, magic and more." },
+  { icon: "🌱", title: "Made to grow with you", body: "New collections monthly — pirate, space, unicorns, jungle, magic and more." },
 ];
 
 function AboutPage() {
