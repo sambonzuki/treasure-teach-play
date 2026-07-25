@@ -207,7 +207,7 @@ export default function Home() {
             </div>
             <div className="relative min-h-[300px] lg:min-h-full">
               <img
-                src={bundles[0].image}
+                src={bundles[1].image}
                 alt="Pirate maths bundle"
                 loading="lazy"
                 className="h-full w-full object-cover"

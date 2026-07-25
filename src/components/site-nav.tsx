@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { useCart } from "@/lib/cart";
+import logoMark from "@/assets/logo-mark.png";
 
 export function SiteNav() {
   const [open, setOpen] = useState(false);
@@ -26,8 +27,8 @@ export function SiteNav() {
       <nav className="sticky top-0 z-50 border-b border-navy/5 bg-warm-white/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 py-3 sm:py-4">
           <Link to="/" className="group flex min-w-0 items-center gap-2">
-            <div className="grid size-10 shrink-0 place-items-center rounded-full bg-gold shadow-md transition-transform group-hover:rotate-12">
-              <span className="text-2xl leading-none">🪙</span>
+            <div className="grid size-11 shrink-0 place-items-center rounded-2xl bg-white ring-1 ring-navy/10 shadow-md transition-transform group-hover:-rotate-6 overflow-hidden">
+              <img src={logoMark} alt="Edventure Printables logo" width={44} height={44} className="size-9 object-contain" />
             </div>
             <div className="min-w-0 leading-tight">
               <div className="truncate font-display text-lg sm:text-xl font-extrabold text-ocean">
