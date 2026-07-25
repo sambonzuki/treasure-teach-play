@@ -6,7 +6,7 @@ import { bundles } from "@/lib/catalog";
 export const Route = createFileRoute("/bundles")({
   head: () => ({
     meta: [
-      { title: "Bundles — Save up to 45% | Math Adventure Printables" },
+      { title: "Bundles — Save up to 45% | Edventure Printables" },
       { name: "description", content: "Save up to 45% with curated pirate maths bundles. Year 3, Year 4, times tables, addition and complete-collection packs." },
       { property: "og:title", content: "Bundles — Save up to 45%" },
       { property: "og:description", content: "Curated pirate maths bundles for parents, teachers and homeschoolers." },

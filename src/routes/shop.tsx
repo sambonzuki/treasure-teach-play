@@ -8,7 +8,7 @@ import { products } from "@/lib/catalog";
 export const Route = createFileRoute("/shop")({
   head: () => ({
     meta: [
-      { title: "Shop Printable Maths Resources — Math Adventure Printables" },
+      { title: "Shop Printable Maths Resources — Edventure Printables" },
       { name: "description", content: "Browse curriculum-aligned printable maths packs by age, year, subject and theme. Instant download." },
       { property: "og:title", content: "Shop Printable Maths Resources" },
       { property: "og:description", content: "Filter by age, year, subject, topic, difficulty and theme." },

@@ -5,9 +5,9 @@ import { SiteFooter } from "@/components/site-footer";
 export const Route = createFileRoute("/faq")({
   head: () => ({
     meta: [
-      { title: "FAQ — Math Adventure Printables" },
+      { title: "FAQ — Edventure Printables" },
       { name: "description", content: "Answers on printing, licence, refunds, instant downloads, compatibility, homeschool and teacher use." },
-      { property: "og:title", content: "Math Adventure Printables — FAQ" },
+      { property: "og:title", content: "Edventure Printables — FAQ" },
       { property: "og:description", content: "Printing, licence, refunds, instant downloads, compatibility and more." },
     ],
   }),

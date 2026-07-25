@@ -9,7 +9,7 @@ export function SiteFooter() {
             <div className="grid size-9 place-items-center rounded-full bg-gold shadow-sm">
               <span className="text-lg">🪙</span>
             </div>
-            <span className="font-display text-xl font-extrabold text-ocean">Math Adventure</span>
+            <span className="font-display text-xl font-extrabold text-ocean">Edventure</span>
           </div>
           <p className="max-w-sm text-navy/60">
             Premium, teacher-created printable maths resources that turn every worksheet into a treasure hunt.
@@ -45,7 +45,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="mx-auto mt-14 max-w-7xl border-t border-navy/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-navy/50">
-        <div>&copy; {new Date().getFullYear()} Math Adventure Printables. Made with 🪙 for young explorers.</div>
+        <div>&copy; {new Date().getFullYear()} Edventure Printables. Made with 🪙 for young explorers.</div>
         <div className="flex gap-6">
           <a href="#" className="hover:text-ocean">Privacy</a>
           <a href="#" className="hover:text-ocean">Terms</a>

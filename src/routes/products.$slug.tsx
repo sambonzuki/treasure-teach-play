@@ -16,7 +16,7 @@ export const Route = createFileRoute("/products/$slug")({
     const { product } = loaderData;
     return {
       meta: [
-        { title: `${product.title} — Math Adventure Printables` },
+        { title: `${product.title} — Edventure Printables` },
         { name: "description", content: product.description },
         { property: "og:title", content: product.title },
         { property: "og:description", content: product.description },
