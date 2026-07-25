@@ -7,9 +7,9 @@ import { bundles, products } from "@/lib/catalog";
 export const Route = createFileRoute("/cart")({
   head: () => ({
     meta: [
-      { title: "Your Cart — Math Adventure Printables" },
+      { title: "Your Cart — Edventure Printables" },
       { name: "description", content: "Review your printable pirate maths packs and complete your order in seconds." },
-      { property: "og:title", content: "Your Cart — Math Adventure Printables" },
+      { property: "og:title", content: "Your Cart — Edventure Printables" },
       { property: "og:description", content: "Review your printable pirate maths packs and check out." },
       { name: "robots", content: "noindex" },
     ],

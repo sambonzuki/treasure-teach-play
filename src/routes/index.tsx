@@ -9,9 +9,9 @@ import { products, bundles } from "@/lib/catalog";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Math Adventure Printables — Learning Through Adventure" },
+      { title: "Edventure Printables — Learning Through Adventure" },
       { name: "description", content: "Turn maths practice into an adventure. Premium printable pirate-themed maths activities children aged 5–10 actually love." },
-      { property: "og:title", content: "Math Adventure Printables — Learning Through Adventure" },
+      { property: "og:title", content: "Edventure Printables — Learning Through Adventure" },
       { property: "og:description", content: "Turn maths practice into an adventure. Premium printable pirate-themed maths activities children aged 5–10 actually love." },
     ],
   }),

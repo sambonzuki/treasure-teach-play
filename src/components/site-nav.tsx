@@ -31,7 +31,7 @@ export function SiteNav() {
             </div>
             <div className="min-w-0 leading-tight">
               <div className="truncate font-display text-lg sm:text-xl font-extrabold text-ocean">
-                Math Adventure
+                Edventure
               </div>
               <div className="hidden sm:block text-[10px] font-semibold uppercase tracking-widest text-navy/50">
                 Printables

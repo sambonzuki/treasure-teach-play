@@ -6,9 +6,9 @@ import heroImg from "@/assets/hero-adventures.jpg";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Math Adventure Printables — Teacher-created maths resources" },
+      { title: "About Edventure Printables — Teacher-created maths resources" },
       { name: "description", content: "Teacher-created, curriculum-aligned printable maths for children aged 5–10. Original artwork, instant downloads, commercial-quality design." },
-      { property: "og:title", content: "About Math Adventure Printables" },
+      { property: "og:title", content: "About Edventure Printables" },
       { property: "og:description", content: "Teacher-created, curriculum-aligned printable maths for children aged 5–10." },
     ],
   }),
@@ -39,7 +39,7 @@ function AboutPage() {
               Learning is better when it feels like an <span className="text-ocean">adventure</span>.
             </h1>
             <p className="mt-5 text-lg text-navy/70">
-              Math Adventure Printables started at a kitchen table, when a Year 3 teacher and a designer decided their kids deserved better than the fifteenth photocopied worksheet of the week. Today, our packs reach classrooms and homeschools across the world.
+              Edventure Printables started at a kitchen table, when a Year 3 teacher and a designer decided their kids deserved better than the fifteenth photocopied worksheet of the week. Today, our packs reach classrooms and homeschools across the world.
             </p>
             <Link to="/shop" className="mt-6 inline-block rounded-2xl bg-ocean px-7 py-4 font-display text-lg font-extrabold text-white shadow-lg shadow-ocean/25 hover:-translate-y-0.5 transition-transform">
               Explore our shop

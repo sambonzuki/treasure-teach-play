@@ -7,7 +7,7 @@ import { useCart } from "@/lib/cart";
 export const Route = createFileRoute("/checkout/success")({
   head: () => ({
     meta: [
-      { title: "Order confirmed — Math Adventure Printables" },
+      { title: "Order confirmed — Edventure Printables" },
       { name: "description", content: "Thanks for your order! Your printables are on the way." },
       { name: "robots", content: "noindex" },
     ],

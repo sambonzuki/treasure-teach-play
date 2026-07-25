@@ -9,9 +9,9 @@ import { createStripeCheckout } from "@/lib/checkout.functions";
 export const Route = createFileRoute("/checkout")({
   head: () => ({
     meta: [
-      { title: "Checkout — Math Adventure Printables" },
+      { title: "Checkout — Edventure Printables" },
       { name: "description", content: "Complete your order to instantly download your maths adventure printables." },
-      { property: "og:title", content: "Checkout — Math Adventure Printables" },
+      { property: "og:title", content: "Checkout — Edventure Printables" },
       { property: "og:description", content: "Complete your order and get instant PDF downloads." },
       { name: "robots", content: "noindex" },
     ],
