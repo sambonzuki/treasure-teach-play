@@ -41,7 +41,7 @@ const groups = [
     title: "Instant downloads",
     items: [
       { q: "How do I get my pack?", a: "You'll receive a download link via email within seconds of purchase. It never expires." },
-      { q: "I didn't get my email — help!", a: "Check your spam folder for a message from hello@mathadventure.co. Still nothing? Message us and we'll resend it manually." },
+      { q: "I didn't get my email — help!", a: "Check your spam folder for a message from hello@edventureprintables.shop. Still nothing? Message us and we'll resend it manually." },
     ],
   },
   {

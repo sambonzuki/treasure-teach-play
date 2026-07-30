@@ -35,7 +35,7 @@ function CartPage() {
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10">
         <h1 className="font-display text-4xl sm:text-5xl font-extrabold">Your treasure chest</h1>
-        <p className="mt-2 text-navy/70">{count === 0 ? "Your chest is empty — set sail and grab a pack." : `${count} item${count > 1 ? "s" : ""} ready for adventure.`}</p>
+        <p className="mt-2 text-navy/70">{count === 0 ? "Your chest is empty — set sail and grab a pack." : `${count} item${count > 1 ? "s" : ""} ready for an Edventure.`}</p>
 
         {items.length === 0 ? (
           <div className="mt-10 rounded-3xl border-2 border-dashed border-navy/15 bg-white p-12 text-center">

@@ -78,7 +78,7 @@ function ShopPage() {
       <header className="border-b border-navy/5 bg-sand-soft/40 px-4 sm:px-6 py-12 sm:py-16">
         <div className="mx-auto max-w-7xl">
           <div className="text-sm font-bold uppercase tracking-widest text-ocean">Shop</div>
-          <h1 className="mt-2 font-display text-4xl sm:text-5xl font-extrabold text-navy">All printable adventures</h1>
+          <h1 className="mt-2 font-display text-4xl sm:text-5xl font-extrabold text-navy">All printable Edventures</h1>
           <p className="mt-3 max-w-2xl text-navy/70 text-lg">Browse every pack — filter by age, year, subject, theme and difficulty.</p>
         </div>
       </header>

@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
-import heroImg from "@/assets/hero-adventures.jpg";
+import heroImg from "@/assets/hero-edventures.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -36,7 +36,7 @@ function AboutPage() {
               Our story
             </span>
             <h1 className="mt-4 font-display text-4xl sm:text-6xl font-extrabold leading-tight">
-              Learning is better when it feels like an <span className="text-ocean">adventure</span>.
+              Learning is better when it feels like an <span className="text-ocean">Edventure</span>.
             </h1>
             <p className="mt-5 text-lg text-navy/70">
               Edventure Printables started at a kitchen table, when a Year 3 teacher and a designer decided their kids deserved better than the fifteenth photocopied worksheet of the week. Today, our packs reach classrooms and homeschools across the world.

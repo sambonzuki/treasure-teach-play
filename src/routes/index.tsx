@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import heroImg from "@/assets/hero-adventures.jpg";
+import heroImg from "@/assets/hero-edventures.jpg";
 import freebieImg from "@/assets/freebie-pack.jpg";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
@@ -9,8 +9,8 @@ import { products, bundles } from "@/lib/catalog";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Edventure Printables — Learning Through Adventure" },
-      { name: "description", content: "Turn maths practice into an adventure. Premium printable pirate-themed maths activities children aged 5–10 actually love." },
+      { title: "Edventure Printables — Learning Through Edventure" },
+      { name: "description", content: "Turn maths practice into an Edventure. Premium printable maths activities children aged 5–10 actually love." },
       { property: "og:title", content: "Edventure Printables — Learning Through Edventure" },
       { property: "og:description", content: "Turn maths practice into an Edventure. Premium printable maths activities children aged 5–10 actually love." },
     ],
@@ -73,10 +73,10 @@ export default function Home() {
               <span>⭐</span> Teacher-created &amp; curriculum aligned
             </span>
             <h1 className="mt-6 font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.05] text-navy text-balance">
-              Turn maths practice into an <span className="text-ocean">adventure</span>.
+              Turn maths practice into an <span className="text-ocean">Edventure</span>.
             </h1>
             <p className="mt-6 max-w-xl text-lg sm:text-xl leading-relaxed text-navy/70">
-              Themed printable maths activities — pirates, space, unicorns and more adventures on the way — designed by teachers, loved by children aged 5–10.
+              Themed printable maths activities — pirates, space, unicorns and more Edventures on the way — designed by teachers, loved by children aged 5–10.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3 sm:gap-4">
@@ -156,7 +156,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
-              <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-navy">Featured adventures</h2>
+              <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-navy">Featured Edventures</h2>
               <p className="mt-2 text-navy/60">Our best-selling printable packs, ready for instant download.</p>
             </div>
             <Link to="/shop" className="font-bold text-ocean underline decoration-2 underline-offset-4 hover:text-navy">

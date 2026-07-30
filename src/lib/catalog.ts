@@ -9,7 +9,7 @@ import spaceImg from "@/assets/product-space-multiplication.jpg";
 
 import unicornImg from "@/assets/product-unicorn-subtraction.jpg";
 import fairytaleImg from "@/assets/product-fairytale-time.jpg";
-import bundleAdventuresImg from "@/assets/product-bundle-adventures.jpg";
+import bundleEdventuresImg from "@/assets/product-bundle-edventures.jpg";
 
 export type Product = {
   slug: string;
@@ -52,7 +52,7 @@ export const products: Product[] = [
   },
   {
     slug: "coral-reef-addition",
-    title: "Coral Reef Addition Adventures",
+    title: "Coral Reef Addition Edventures",
     subject: "Addition",
     topic: "Number Bonds",
     age: "5–7",
@@ -190,7 +190,7 @@ export const products: Product[] = [
     rating: 4.9,
     reviews: 27,
     skills: ["Equivalent fractions", "Comparing", "Fractions of amounts", "Simplifying"],
-    description: "Share stardust and split rainbows across 24 pages of unicorn-themed fraction adventures.",
+    description: "Share stardust and split rainbows across 24 pages of unicorn-themed fraction Edventures.",
   },
   {
     slug: "enchanted-castle-time",
@@ -214,14 +214,14 @@ export const products: Product[] = [
 
 export const bundles = [
   {
-    slug: "all-adventures-collection",
-    title: "The All-Adventures Mega Collection",
+    slug: "all-edventures-collection",
+    title: "The All-Edventures Mega Collection",
     tagline: "Pirate, space, unicorns & fairy tale — every world in one",
     price: 32,
     original: 60,
     saving: "47%",
     includes: ["Pirate", "Space", "Unicorns", "Fairy Tale"],
-    image: bundleAdventuresImg,
+    image: bundleEdventuresImg,
     color: "from-navy to-emerald",
     pages: 200,
   },

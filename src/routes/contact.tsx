@@ -33,7 +33,7 @@ function ContactPage() {
               <span className="grid size-10 place-items-center rounded-full bg-sand-soft text-lg">📧</span>
               <div>
                 <div className="font-bold">Email</div>
-                <a href="mailto:hello@mathadventure.co" className="text-ocean hover:underline">hello@mathadventure.co</a>
+                <a href="mailto:hello@edventureprintables.shop" className="text-ocean hover:underline">hello@edventureprintables.shop</a>
               </div>
             </div>
             <div className="flex items-start gap-3">

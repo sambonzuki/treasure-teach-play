@@ -10,7 +10,7 @@ export const Route = createFileRoute("/checkout")({
   head: () => ({
     meta: [
       { title: "Checkout — Edventure Printables" },
-      { name: "description", content: "Complete your order to instantly download your maths adventure printables." },
+      { name: "description", content: "Complete your order to instantly download your maths Edventure printables." },
       { property: "og:title", content: "Checkout — Edventure Printables" },
       { property: "og:description", content: "Complete your order and get instant PDF downloads." },
       { name: "robots", content: "noindex" },
