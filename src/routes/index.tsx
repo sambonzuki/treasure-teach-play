@@ -177,16 +177,16 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 items-center">
             <div className="p-8 sm:p-12 lg:p-16 text-white">
               <span className="inline-flex items-center gap-2 rounded-full bg-gold px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-navy">
-                🏴‍☠️ Save up to 45%
+                🏴‍☠️ Save {bundles[0].saving}
               </span>
               <h2 className="mt-6 font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">
-                The Ultimate Pirate Maths Collection
+                {bundles[0].title}
               </h2>
               <p className="mt-4 max-w-lg text-white/80 text-lg">
-                150+ pages spanning every core skill — addition, subtraction, multiplication, division, fractions, money and time.
+                224 pages of pirate adventure — every Treasure Island quest from the Year 3–4 mystery to the Year 6 summit climb.
               </p>
               <div className="mt-6 flex flex-wrap gap-2">
-                {["Addition", "Subtraction", "Multiplication", "Division", "Fractions", "Money", "Time"].map((s) => (
+                {bundles[0].includes.map((s) => (
                   <span key={s} className="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-white ring-1 ring-white/20">
                     {s}
                   </span>
@@ -194,8 +194,8 @@ export default function Home() {
               </div>
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <div className="flex items-baseline gap-3">
-                  <span className="font-display text-4xl sm:text-5xl font-extrabold text-gold">£24</span>
-                  <span className="text-white/50 line-through text-lg">£45</span>
+                  <span className="font-display text-4xl sm:text-5xl font-extrabold text-gold">£{bundles[0].price}</span>
+                  <span className="text-white/50 line-through text-lg">£{bundles[0].original.toFixed(2)}</span>
                 </div>
                 <Link
                   to="/bundles"
@@ -207,8 +207,8 @@ export default function Home() {
             </div>
             <div className="relative min-h-[300px] lg:min-h-full">
               <img
-                src={bundles[1].image}
-                alt="Pirate maths bundle"
+                src={bundles[0].image}
+                alt="Treasure Island complete collection"
                 loading="lazy"
                 className="h-full w-full object-cover"
               />

@@ -1,8 +1,9 @@
 import { createFileRoute, notFound, Link, useNavigate } from "@tanstack/react-router";
+import { useState } from "react";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { ProductCard } from "@/components/product-card";
-import { getProductBySlug, products, bundles } from "@/lib/catalog";
+import { getProductBySlug, products, bundles, kindRibbonColor } from "@/lib/catalog";
 import { useCart, productToCartItem, bundleToCartItem } from "@/lib/cart";
 
 export const Route = createFileRoute("/products/$slug")({
@@ -12,7 +13,8 @@ export const Route = createFileRoute("/products/$slug")({
     return { product };
   },
   head: ({ loaderData }) => {
-    if (!loaderData) return { meta: [{ title: "Pack not found" }, { name: "robots", content: "noindex" }] };
+    if (!loaderData)
+      return { meta: [{ title: "Pack not found" }, { name: "robots", content: "noindex" }] };
     const { product } = loaderData;
     return {
       meta: [
@@ -30,7 +32,9 @@ export const Route = createFileRoute("/products/$slug")({
       <div className="text-center px-6">
         <div className="text-6xl mb-4">🧭</div>
         <h1 className="font-display text-3xl">Pack not found</h1>
-        <Link to="/shop" className="mt-4 inline-block text-ocean font-bold underline">Back to shop</Link>
+        <Link to="/shop" className="mt-4 inline-block text-ocean font-bold underline">
+          Back to shop
+        </Link>
       </div>
     </div>
   ),
@@ -43,11 +47,15 @@ function ProductPage() {
   const { add } = useCart();
   const navigate = useNavigate();
   const suggestedBundle = bundles[0];
+  const [activeImg, setActiveImg] = useState(0);
   const addThis = () => {
     const item = productToCartItem(product.slug);
     if (item) add(item);
   };
-  const addAndGoToCart = () => { addThis(); navigate({ to: "/cart" }); };
+  const addAndGoToCart = () => {
+    addThis();
+    navigate({ to: "/cart" });
+  };
 
   return (
     <div className="min-h-dvh bg-warm-white text-navy">
@@ -55,35 +63,51 @@ function ProductPage() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-8">
         <nav className="mb-6 text-sm text-navy/60">
-          <Link to="/" className="hover:text-ocean">Home</Link> <span className="mx-1">/</span>{" "}
-          <Link to="/shop" className="hover:text-ocean">Shop</Link> <span className="mx-1">/</span>{" "}
+          <Link to="/" className="hover:text-ocean">
+            Home
+          </Link>{" "}
+          <span className="mx-1">/</span>{" "}
+          <Link to="/shop" className="hover:text-ocean">
+            Shop
+          </Link>{" "}
+          <span className="mx-1">/</span>{" "}
           <span className="text-navy font-medium">{product.title}</span>
         </nav>
 
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
           {/* Preview gallery */}
           <div>
-            <div className="overflow-hidden rounded-3xl bg-sand-soft ring-1 ring-navy/5">
+            <div className="relative overflow-hidden rounded-3xl bg-sand-soft ring-1 ring-navy/5">
               <img
-                src={product.image}
+                src={product.images[activeImg]}
                 alt={product.title}
                 width={900}
                 height={900}
                 className="aspect-square w-full object-cover"
               />
+              {/* pack-type ribbon */}
+              <div
+                className={`absolute -right-9 top-6 rotate-45 px-10 py-1.5 text-xs font-extrabold uppercase tracking-wider shadow-md ${kindRibbonColor[product.kind]}`}
+              >
+                {product.kindLabel}
+              </div>
             </div>
             <div className="mt-4 grid grid-cols-4 gap-3">
-              {[0, 1, 2, 3].map((i) => (
+              {product.images.map((img, i) => (
                 <button
                   key={i}
-                  className={`aspect-square overflow-hidden rounded-2xl ring-2 ${i === 0 ? "ring-ocean" : "ring-navy/10 hover:ring-navy/30"}`}
+                  onClick={() => setActiveImg(i)}
+                  aria-label={`Preview ${i + 1} of ${product.title}`}
+                  className={`aspect-square overflow-hidden rounded-2xl ring-2 transition-all ${
+                    i === activeImg ? "ring-ocean scale-105" : "ring-navy/10 hover:ring-navy/30"
+                  }`}
                 >
-                  <img src={product.image} alt="" className="h-full w-full object-cover" loading="lazy" />
+                  <img src={img} alt="" className="h-full w-full object-cover" loading="lazy" />
                 </button>
               ))}
             </div>
             <div className="mt-4 rounded-2xl border border-dashed border-navy/15 bg-white p-4 text-center text-sm text-navy/60">
-              📖 Click any thumbnail to flip through a preview
+              📖 Click a thumbnail to peek inside the pack
             </div>
           </div>
 
@@ -104,6 +128,9 @@ function ProductPage() {
               <span className="rounded-full bg-sand-soft px-3 py-1 text-xs font-extrabold uppercase tracking-wider text-navy">
                 {product.subject}
               </span>
+              <span className="rounded-full bg-navy px-3 py-1 text-xs font-extrabold uppercase tracking-wider text-white">
+                {product.kindLabel}
+              </span>
             </div>
             <h1 className="mt-5 font-display text-4xl sm:text-5xl font-extrabold text-navy leading-tight">
               {product.title}
@@ -116,11 +143,17 @@ function ProductPage() {
             <p className="mt-5 text-lg leading-relaxed text-navy/75">{product.description}</p>
 
             <div className="mt-6 flex items-baseline gap-3">
-              <span className="font-display text-5xl font-extrabold text-navy">£{price.toFixed(2)}</span>
+              <span className="font-display text-5xl font-extrabold text-navy">
+                £{price.toFixed(2)}
+              </span>
               {product.salePrice && (
                 <>
-                  <span className="text-xl text-navy/40 line-through">£{product.price.toFixed(2)}</span>
-                  <span className="rounded-full bg-coral px-2.5 py-1 text-[10px] font-extrabold uppercase text-white">Save {Math.round((1 - product.salePrice / product.price) * 100)}%</span>
+                  <span className="text-xl text-navy/40 line-through">
+                    £{product.price.toFixed(2)}
+                  </span>
+                  <span className="rounded-full bg-coral px-2.5 py-1 text-[10px] font-extrabold uppercase text-white">
+                    Save {Math.round((1 - product.salePrice / product.price) * 100)}%
+                  </span>
                 </>
               )}
             </div>
@@ -129,7 +162,10 @@ function ProductPage() {
             </div>
 
             <div className="mt-6 flex flex-col sm:flex-row gap-3">
-              <button onClick={addThis} className="flex-1 rounded-2xl bg-ocean px-7 py-4 font-display text-lg font-extrabold text-white shadow-xl shadow-ocean/30 transition-transform hover:-translate-y-0.5">
+              <button
+                onClick={addThis}
+                className="flex-1 rounded-2xl bg-ocean px-7 py-4 font-display text-lg font-extrabold text-white shadow-xl shadow-ocean/30 transition-transform hover:-translate-y-0.5"
+              >
                 Add to cart — £{price.toFixed(2)}
               </button>
             </div>
@@ -143,10 +179,14 @@ function ProductPage() {
                     Save {suggestedBundle.saving} with the {suggestedBundle.title}
                   </div>
                   <p className="mt-1 text-sm text-navy/70">
-                    Get this pack plus {suggestedBundle.includes.length - 1}+ more for just £{suggestedBundle.price.toFixed(2)} (was £{suggestedBundle.original.toFixed(2)}).
+                    Get this pack plus {suggestedBundle.includes.length - 1}+ more for just £
+                    {suggestedBundle.price.toFixed(2)} (was £{suggestedBundle.original.toFixed(2)}).
                   </p>
                   <button
-                    onClick={() => { const b = bundleToCartItem(suggestedBundle.slug); if (b) add(b); }}
+                    onClick={() => {
+                      const b = bundleToCartItem(suggestedBundle.slug);
+                      if (b) add(b);
+                    }}
                     className="mt-2 rounded-full bg-navy px-4 py-2 text-xs font-bold uppercase tracking-wider text-white hover:bg-ocean-deep"
                   >
                     Add bundle instead
@@ -154,8 +194,6 @@ function ProductPage() {
                 </div>
               </div>
             </div>
-
-
 
             <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-xs">
               {[
@@ -196,22 +234,38 @@ function ProductPage() {
 
         {/* Frequently bought together */}
         <section className="mt-20">
-          <h2 className="font-display text-3xl font-extrabold text-navy">Frequently bought together</h2>
+          <h2 className="font-display text-3xl font-extrabold text-navy">
+            Frequently bought together
+          </h2>
           <div className="mt-6 rounded-3xl border border-navy/5 bg-white p-6 sm:p-8 shadow-sm">
             <div className="flex flex-wrap items-center gap-4 sm:gap-6">
               {[product, ...related.slice(0, 2)].map((p, i) => (
                 <div key={p.slug} className="flex items-center gap-3">
                   {i > 0 && <span className="font-display text-2xl text-navy/40">+</span>}
-                  <img src={p.image} alt={p.title} className="size-20 rounded-xl object-cover ring-1 ring-navy/10" />
+                  <img
+                    src={p.image}
+                    alt={p.title}
+                    className="size-20 rounded-xl object-cover ring-1 ring-navy/10"
+                  />
                 </div>
               ))}
               <div className="ml-auto text-right">
                 <div className="text-sm text-navy/60">Bundle price</div>
                 <div className="font-display text-3xl font-extrabold text-ocean">
-                  £{(price + (related[0].salePrice ?? related[0].price) + (related[1].salePrice ?? related[1].price)).toFixed(2)}
+                  £
+                  {(
+                    price +
+                    (related[0].salePrice ?? related[0].price) +
+                    (related[1].salePrice ?? related[1].price)
+                  ).toFixed(2)}
                 </div>
                 <button
-                  onClick={() => { [product, ...related.slice(0, 2)].forEach((p) => { const it = productToCartItem(p.slug); if (it) add(it); }); }}
+                  onClick={() => {
+                    [product, ...related.slice(0, 2)].forEach((p) => {
+                      const it = productToCartItem(p.slug);
+                      if (it) add(it);
+                    });
+                  }}
                   className="mt-2 rounded-2xl bg-navy px-5 py-2.5 text-sm font-bold text-white hover:bg-ocean-deep"
                 >
                   Add all three
@@ -225,7 +279,9 @@ function ProductPage() {
         <section className="mt-20 mb-16">
           <h2 className="font-display text-3xl font-extrabold text-navy">You may also love</h2>
           <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {related.map((p) => <ProductCard key={p.slug} product={p} />)}
+            {related.map((p) => (
+              <ProductCard key={p.slug} product={p} />
+            ))}
           </div>
         </section>
       </div>
@@ -240,7 +296,10 @@ function ProductPage() {
               <div className="font-bold text-ocean">£{price.toFixed(2)}</div>
             </div>
           </div>
-          <button onClick={addAndGoToCart} className="shrink-0 rounded-2xl bg-coral px-5 sm:px-7 py-3 font-display font-extrabold text-white shadow-lg shadow-coral/30 hover:scale-105 transition-transform">
+          <button
+            onClick={addAndGoToCart}
+            className="shrink-0 rounded-2xl bg-coral px-5 sm:px-7 py-3 font-display font-extrabold text-white shadow-lg shadow-coral/30 hover:scale-105 transition-transform"
+          >
             Add to cart
           </button>
         </div>

@@ -1,11 +1,12 @@
 import { Link } from "@tanstack/react-router";
 import type { Product } from "@/lib/catalog";
+import { kindRibbonColor } from "@/lib/catalog";
 
 const badgeColor: Record<NonNullable<Product["badge"]>, string> = {
   "Best Seller": "bg-emerald text-white",
-  "New": "bg-coral text-white",
-  "Sale": "bg-gold text-navy",
-  "Bundle": "bg-gold text-navy",
+  New: "bg-coral text-white",
+  Sale: "bg-gold text-navy",
+  Bundle: "bg-gold text-navy",
   "Teacher Favourite": "bg-navy text-white",
 };
 
@@ -28,13 +29,21 @@ export function ProductCard({ product }: { product: Product }) {
         />
         <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
           {product.badge && (
-            <span className={`rounded-full px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider ${badgeColor[product.badge]}`}>
+            <span
+              className={`rounded-full px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider ${badgeColor[product.badge]}`}
+            >
               {product.badge}
             </span>
           )}
           <span className="rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-navy">
             {product.year}
           </span>
+        </div>
+        {/* pack-type ribbon */}
+        <div
+          className={`absolute -right-9 top-5 rotate-45 px-10 py-1 text-[10px] font-extrabold uppercase tracking-wider shadow-md ${kindRibbonColor[product.kind]}`}
+        >
+          {product.kindLabel}
         </div>
       </div>
       <div className="flex min-w-0 flex-1 flex-col px-2 pb-2">
@@ -47,14 +56,20 @@ export function ProductCard({ product }: { product: Product }) {
         <div className="mb-4 flex items-center gap-2 text-xs text-navy/60 font-medium">
           <span>📄 {product.pages} pages</span>
           <span>·</span>
-          <span>⭐ {product.rating.toFixed(1)} ({product.reviews})</span>
+          <span>
+            ⭐ {product.rating.toFixed(1)} ({product.reviews})
+          </span>
         </div>
         <div className="mt-auto flex items-center justify-between">
           <div className="flex flex-col">
             <div className="flex items-baseline gap-2">
-              <span className="font-display text-2xl font-extrabold text-navy">£{price.toFixed(2)}</span>
+              <span className="font-display text-2xl font-extrabold text-navy">
+                £{price.toFixed(2)}
+              </span>
               {product.salePrice && (
-                <span className="text-sm text-navy/40 line-through">£{product.price.toFixed(2)}</span>
+                <span className="text-sm text-navy/40 line-through">
+                  £{product.price.toFixed(2)}
+                </span>
               )}
             </div>
             <span className="text-[11px] font-bold uppercase tracking-wider text-emerald">
