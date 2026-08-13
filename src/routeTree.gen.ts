@@ -19,6 +19,8 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductsSlugRouteImport } from './routes/products.$slug'
 import { Route as CheckoutSuccessRouteImport } from './routes/checkout.success'
+import { Route as ApiStripeWebhookRouteImport } from './routes/api/stripe-webhook'
+import { Route as ApiDownloadTokenRouteImport } from './routes/api/download.$token'
 
 const ShopRoute = ShopRouteImport.update({
   id: '/shop',
@@ -70,6 +72,16 @@ const CheckoutSuccessRoute = CheckoutSuccessRouteImport.update({
   path: '/success',
   getParentRoute: () => CheckoutRoute,
 } as any)
+const ApiStripeWebhookRoute = ApiStripeWebhookRouteImport.update({
+  id: '/api/stripe-webhook',
+  path: '/api/stripe-webhook',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiDownloadTokenRoute = ApiDownloadTokenRouteImport.update({
+  id: '/api/download/$token',
+  path: '/api/download/$token',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -80,8 +92,10 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/shop': typeof ShopRoute
+  '/api/stripe-webhook': typeof ApiStripeWebhookRoute
   '/checkout/success': typeof CheckoutSuccessRoute
   '/products/$slug': typeof ProductsSlugRoute
+  '/api/download/$token': typeof ApiDownloadTokenRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -92,8 +106,10 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/shop': typeof ShopRoute
+  '/api/stripe-webhook': typeof ApiStripeWebhookRoute
   '/checkout/success': typeof CheckoutSuccessRoute
   '/products/$slug': typeof ProductsSlugRoute
+  '/api/download/$token': typeof ApiDownloadTokenRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -105,8 +121,10 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/shop': typeof ShopRoute
+  '/api/stripe-webhook': typeof ApiStripeWebhookRoute
   '/checkout/success': typeof CheckoutSuccessRoute
   '/products/$slug': typeof ProductsSlugRoute
+  '/api/download/$token': typeof ApiDownloadTokenRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -119,8 +137,10 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/shop'
+    | '/api/stripe-webhook'
     | '/checkout/success'
     | '/products/$slug'
+    | '/api/download/$token'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -131,8 +151,10 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/shop'
+    | '/api/stripe-webhook'
     | '/checkout/success'
     | '/products/$slug'
+    | '/api/download/$token'
   id:
     | '__root__'
     | '/'
@@ -143,8 +165,10 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faq'
     | '/shop'
+    | '/api/stripe-webhook'
     | '/checkout/success'
     | '/products/$slug'
+    | '/api/download/$token'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -156,7 +180,9 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
   ShopRoute: typeof ShopRoute
+  ApiStripeWebhookRoute: typeof ApiStripeWebhookRoute
   ProductsSlugRoute: typeof ProductsSlugRoute
+  ApiDownloadTokenRoute: typeof ApiDownloadTokenRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -231,6 +257,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CheckoutSuccessRouteImport
       parentRoute: typeof CheckoutRoute
     }
+    '/api/stripe-webhook': {
+      id: '/api/stripe-webhook'
+      path: '/api/stripe-webhook'
+      fullPath: '/api/stripe-webhook'
+      preLoaderRoute: typeof ApiStripeWebhookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/download/$token': {
+      id: '/api/download/$token'
+      path: '/api/download/$token'
+      fullPath: '/api/download/$token'
+      preLoaderRoute: typeof ApiDownloadTokenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -255,7 +295,9 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
   ShopRoute: ShopRoute,
+  ApiStripeWebhookRoute: ApiStripeWebhookRoute,
   ProductsSlugRoute: ProductsSlugRoute,
+  ApiDownloadTokenRoute: ApiDownloadTokenRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

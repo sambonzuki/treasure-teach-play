@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { useCart } from "@/lib/cart";
-import { getOrderDownloads } from "@/lib/order.functions";
+import { getOrderDownloads, fulfillOrder } from "@/lib/order.functions";
 
 type OrderState = {
   paid: boolean;
@@ -19,7 +19,10 @@ export const Route = createFileRoute("/checkout/success")({
   head: () => ({
     meta: [
       { title: "Order confirmed — Edventure Printables" },
-      { name: "description", content: "Thanks for your order! Your printables are ready to download." },
+      {
+        name: "description",
+        content: "Thanks for your order! Your printables are ready to download.",
+      },
       { name: "robots", content: "noindex" },
     ],
   }),
@@ -30,6 +33,7 @@ function SuccessPage() {
   const { clear } = useCart();
   const { session_id } = useSearch({ from: "/checkout/success" });
   const fetchOrder = useServerFn(getOrderDownloads);
+  const triggerFulfillment = useServerFn(fulfillOrder);
   const [order, setOrder] = useState<OrderState | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -44,6 +48,11 @@ function SuccessPage() {
       setLoading(false);
       return;
     }
+    // Fire-and-forget: send the thank-you email with PDFs attached.
+    // Idempotent server-side, so refreshes never resend.
+    triggerFulfillment({ data: { sessionId: session_id } }).catch((e) =>
+      console.error("fulfillment trigger failed", e),
+    );
     (async () => {
       try {
         const res = await fetchOrder({ data: { sessionId: session_id } });
@@ -57,22 +66,28 @@ function SuccessPage() {
     return () => {
       cancelled = true;
     };
-  }, [session_id, fetchOrder]);
+  }, [session_id, fetchOrder, triggerFulfillment]);
 
   return (
     <div className="min-h-dvh bg-warm-white text-navy">
       <SiteNav />
       <div className="mx-auto max-w-2xl px-4 sm:px-6 py-16 text-center">
-        <div className="mx-auto mb-6 grid size-24 place-items-center rounded-full bg-emerald text-5xl shadow-xl">🎉</div>
+        <div className="mx-auto mb-6 grid size-24 place-items-center rounded-full bg-emerald text-5xl shadow-xl">
+          🎉
+        </div>
         <h1 className="font-display text-4xl sm:text-5xl font-extrabold">Treasure secured!</h1>
         <p className="mt-3 text-navy/70">
-          Your payment was successful{order?.email ? ` — a copy of your download links has been reserved for ${order.email}` : ""}.
+          Your payment was successful
+          {order?.email
+            ? ` — the same download links were just emailed to ${order.email}.`
+            : " — the same download links were just emailed to you."}
         </p>
 
         <div className="mt-8 rounded-3xl border border-navy/5 bg-white p-6 shadow-lg text-left">
           <h2 className="font-display text-xl font-extrabold text-navy">Your downloads</h2>
           <p className="mt-1 text-sm text-navy/60">
-            Click each link to save your printables. Links are unique to your order — keep this page handy.
+            Each link is unique to your order and works 5 times — the same links are in your order
+            email, so keep that handy.
           </p>
 
           {loading && (
@@ -90,14 +105,18 @@ function SuccessPage() {
 
           {!loading && !error && !session_id && (
             <div className="mt-5 rounded-xl border border-navy/10 bg-sand-soft/50 px-4 py-3 text-sm text-navy/70">
-              No order reference found. If you've just paid, check your inbox — your download links are on the way.
+              No order reference found. If you've just paid, check your inbox — your download links
+              are on the way.
             </div>
           )}
 
           {!loading && !error && order && (
             <ul className="mt-5 space-y-3">
               {order.items.map((it, idx) => (
-                <li key={`${it.slug}-${idx}`} className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-navy/5 bg-sand-soft/40 px-4 py-3">
+                <li
+                  key={`${it.slug}-${idx}`}
+                  className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-navy/5 bg-sand-soft/40 px-4 py-3"
+                >
                   <div className="min-w-0">
                     <div className="truncate font-bold text-navy">{it.title}</div>
                     <div className="text-xs text-navy/60">Qty {it.qty}</div>
@@ -122,8 +141,18 @@ function SuccessPage() {
         </div>
 
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <Link to="/shop" className="rounded-2xl bg-ocean px-6 py-3 font-bold text-white shadow-lg shadow-ocean/30">Keep exploring</Link>
-          <Link to="/" className="rounded-2xl border border-navy/10 bg-white px-6 py-3 font-bold text-navy hover:bg-sand-soft">Back home</Link>
+          <Link
+            to="/shop"
+            className="rounded-2xl bg-ocean px-6 py-3 font-bold text-white shadow-lg shadow-ocean/30"
+          >
+            Keep exploring
+          </Link>
+          <Link
+            to="/"
+            className="rounded-2xl border border-navy/10 bg-white px-6 py-3 font-bold text-navy hover:bg-sand-soft"
+          >
+            Back home
+          </Link>
         </div>
       </div>
       <SiteFooter />
