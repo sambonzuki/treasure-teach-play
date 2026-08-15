@@ -1,4 +1,4 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, Outlet, useLocation, useNavigate } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { SiteNav } from "@/components/site-nav";
@@ -22,10 +22,17 @@ export const Route = createFileRoute("/checkout")({
 function CheckoutPage() {
   const { items, subtotal, count } = useCart();
   const navigate = useNavigate();
+  const pathname = useLocation({ select: (l) => l.pathname });
   const startCheckout = useServerFn(createStripeCheckout);
   const [processing, setProcessing] = useState(false);
   const [email, setEmail] = useState("");
   const [error, setError] = useState<string | null>(null);
+
+  // /checkout is the parent of /checkout/success — render the child route
+  // (order confirmation) instead of the checkout form when nested.
+  if (pathname !== "/checkout") {
+    return <Outlet />;
+  }
 
   const discount = count >= 3 ? subtotal * 0.1 : 0;
   const total = subtotal - discount;
