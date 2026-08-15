@@ -10,8 +10,13 @@
  * session is marked metadata.fulfilled="true" after a successful send.
  *
  * Required env: STRIPE_SECRET_KEY, SENDGRID_API_KEY, DOWNLOAD_SECRET.
- * Optional env: FULFILLMENT_FROM (default orders@edventureprintables.com),
+ * Optional env: FULFILLMENT_FROM (default orders@edventureprintables.shop —
+ *               must be on the SendGrid-authenticated domain),
  *               FULFILLMENT_FROM_NAME (default "Edventure Printables").
+ *
+ * The email is themed after the world(s) in the order: Treasure Island
+ * (pirate), Unicorn Isles, or Galaxy Maths. Mixed-world orders get a
+ * neutral all-worlds message.
  */
 import Stripe from "stripe";
 import { products } from "./catalog";
@@ -84,7 +89,77 @@ function esc(s: string) {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
-export function buildEmailHtml(items: LinkItem[]): string {
+/* ---------------- themed order emails ---------------- */
+
+type ThemeKey = "pirate" | "unicorn" | "space";
+
+function themeForSlug(slug: string): ThemeKey | null {
+  if (slug.startsWith("treasure-island-")) return "pirate";
+  if (slug.startsWith("unicorn-isles-")) return "unicorn";
+  if (slug.startsWith("galaxy-maths-")) return "space";
+  return null;
+}
+
+/** The single theme shared by every item, or null for mixed/other orders. */
+function themeForItems(items: LinkItem[]): ThemeKey | null {
+  const themes = new Set(items.map((it) => themeForSlug(it.slug)).filter(Boolean));
+  return themes.size === 1 ? ([...themes][0] as ThemeKey) : null;
+}
+
+type EmailCopy = {
+  subject: string;
+  heading: string;
+  sub: string;
+  intro: string;
+  signoff: string;
+  gradient: string;
+};
+
+const SHARED_INTRO_TAIL =
+  "each Download PDF button below saves one pack. Print at home or school, and reprint as often as you like.";
+
+const THEME_EMAILS: Record<ThemeKey, EmailCopy> = {
+  pirate: {
+    subject: "Treasure secured! 🏴‍☠️ Your Treasure Island maths packs are ready",
+    heading: "Treasure secured! 🏴‍☠️",
+    sub: "Ahoy, matey — thank you for your order!",
+    intro: `Your pirate maths adventures are ready — ${SHARED_INTRO_TAIL}`,
+    signoff: "Fair winds and happy adventuring,",
+    gradient: "linear-gradient(135deg,#0077BE,#1A2E44)",
+  },
+  unicorn: {
+    subject: "Unicorn magic unlocked! 🦄 Your Unicorn Isles maths packs are ready",
+    heading: "Unicorn magic unlocked! 🦄",
+    sub: "Sparkly news — thank you for your order!",
+    intro: `The Unicorn Isles are sparkling — your magical maths adventures are ready, and ${SHARED_INTRO_TAIL}`,
+    signoff: "Rainbows and happy adventuring,",
+    gradient: "linear-gradient(135deg,#B565D8,#FF7EB9)",
+  },
+  space: {
+    subject: "Mission accomplished! 🚀 Your Galaxy Maths packs are ready",
+    heading: "Mission accomplished! 🚀",
+    sub: "Three… two… one — thank you for your order!",
+    intro: `Your Galactic maths missions are cleared for launch — ${SHARED_INTRO_TAIL}`,
+    signoff: "Happy exploring among the stars,",
+    gradient: "linear-gradient(135deg,#1A2E44,#5B2A86)",
+  },
+};
+
+const MIXED_EMAIL: EmailCopy = {
+  subject: "Your Edventure Printables are ready 🏴‍☠️🦄🚀 (download links inside)",
+  heading: "Adventure unlocked! 🏴‍☠️🦄🚀",
+  sub: "Thank you for your Edventure Printables order.",
+  intro: `Your printable maths adventures are ready — ${SHARED_INTRO_TAIL}`,
+  signoff: "Happy adventuring,",
+  gradient: "linear-gradient(135deg,#0077BE,#5B2A86)",
+};
+
+function emailCopyFor(items: LinkItem[]): EmailCopy {
+  const theme = themeForItems(items);
+  return theme ? THEME_EMAILS[theme] : MIXED_EMAIL;
+}
+
+export function buildEmailHtml(items: LinkItem[], copy: EmailCopy = emailCopyFor(items)): string {
   const rows = items
     .map(
       (it) => `<tr>
@@ -99,17 +174,17 @@ export function buildEmailHtml(items: LinkItem[]): string {
 <html><body style="margin:0;padding:0;background:#FBF3DF;font-family:'Segoe UI',Arial,sans-serif;color:#1A2E44">
   <div style="max-width:560px;margin:0 auto;padding:32px 16px">
     <div style="background:#ffffff;border-radius:20px;overflow:hidden;box-shadow:0 6px 24px rgba(26,46,68,.08)">
-      <div style="background:linear-gradient(135deg,#0077BE,#1A2E44);padding:28px 28px 24px;color:#fff">
-        <div style="font-size:26px;font-weight:800">Treasure secured! 🏴‍☠️</div>
-        <div style="opacity:.85;margin-top:6px">Thank you for your Edventure Printables order.</div>
+      <div style="background:${copy.gradient};padding:28px 28px 24px;color:#fff">
+        <div style="font-size:26px;font-weight:800">${esc(copy.heading)}</div>
+        <div style="opacity:.85;margin-top:6px">${esc(copy.sub)}</div>
       </div>
       <div style="padding:24px 28px">
-        <p style="margin:0 0 16px">Your printables are ready — each <strong>Download PDF</strong> button below saves one pack. Print at home or school, and reprint as often as you like.</p>
+        <p style="margin:0 0 16px">${esc(copy.intro)}</p>
         <table style="width:100%;border-collapse:collapse;margin:8px 0 16px">${rows}</table>
         <p style="margin:0 0 4px;font-size:14px;color:#5b6b7f">Each link works <strong>${MAX_DOWNLOADS} times</strong> — keep this email as your backup. Any trouble? Just reply and we'll help.</p>
       </div>
       <div style="background:#FBF3DF;padding:16px 28px;font-size:13px;color:#5b6b7f">
-        Happy adventuring,<br/><strong>The Edventure Printables crew</strong>
+        ${esc(copy.signoff)}<br/><strong>The Edventure Printables crew</strong>
       </div>
     </div>
     <p style="text-align:center;font-size:12px;color:#9aa5b1;margin-top:16px">
@@ -119,9 +194,9 @@ export function buildEmailHtml(items: LinkItem[]): string {
 </body></html>`;
 }
 
-function buildEmailText(items: LinkItem[]): string {
+function buildEmailText(items: LinkItem[], copy: EmailCopy = emailCopyFor(items)): string {
   const lines = items.map((it) => `- ${it.title}:\n  ${it.url}`).join("\n");
-  return `Treasure secured!\n\nThank you for your Edventure Printables order. Your printables are ready — each link below downloads one pack (works ${MAX_DOWNLOADS} times).\n\n${lines}\n\nKeep this email as your backup. Any trouble? Just reply and we'll help.\n\nHappy adventuring,\nThe Edventure Printables crew`;
+  return `${copy.heading}\n\n${copy.sub} ${copy.intro} Each link works ${MAX_DOWNLOADS} times.\n\n${lines}\n\nKeep this email as your backup. Any trouble? Just reply and we'll help.\n\n${copy.signoff}\nThe Edventure Printables crew`;
 }
 
 async function sendGridSend(opts: {
@@ -141,7 +216,7 @@ async function sendGridSend(opts: {
     body: JSON.stringify({
       personalizations: [{ to: [{ email: opts.to }] }],
       from: {
-        email: process.env.FULFILLMENT_FROM ?? "orders@edventureprintables.com",
+        email: process.env.FULFILLMENT_FROM ?? "orders@edventureprintables.shop",
         name: process.env.FULFILLMENT_FROM_NAME ?? "Edventure Printables",
       },
       subject: opts.subject,
@@ -161,6 +236,7 @@ export type FulfillResult = {
   reason?: string;
   links?: number;
   email?: string | null;
+  theme?: ThemeKey | "mixed";
 };
 
 /**
@@ -198,12 +274,14 @@ export async function fulfillStripeSession(
     };
   });
   const links = itemsWithLinks(origin, sessionId, items);
+  const theme = themeForItems(links);
+  const copy = emailCopyFor(links);
 
   await sendGridSend({
     to: email,
-    subject: "Your Edventure Printables are ready 🏴‍☠️ (download links inside)",
-    html: buildEmailHtml(links),
-    text: buildEmailText(links),
+    subject: copy.subject,
+    html: buildEmailHtml(links, copy),
+    text: buildEmailText(links, copy),
   });
 
   try {
@@ -214,5 +292,5 @@ export async function fulfillStripeSession(
     // email already sent; worst case a manual retrigger duplicates it
     console.error("[fulfillment] could not mark session fulfilled:", err);
   }
-  return { sent: true, links: links.length, email };
+  return { sent: true, links: links.length, email, theme: theme ?? "mixed" };
 }
