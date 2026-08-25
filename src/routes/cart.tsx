@@ -3,6 +3,7 @@ import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { useCart, bundleToCartItem, productToCartItem } from "@/lib/cart";
 import { bundles, products } from "@/lib/catalog";
+import { cartTotals } from "@/lib/pricing";
 
 export const Route = createFileRoute("/cart")({
   head: () => ({
@@ -25,9 +26,8 @@ function CartPage() {
   const suggestedBundles = bundles.filter((b) => !cartSlugs.has(b.slug)).slice(0, 2);
   const suggestedProducts = products.filter((p) => !cartSlugs.has(p.slug)).slice(0, 3);
 
-  // Volume discount: 3+ items = 10% off
-  const discount = count >= 3 ? subtotal * 0.1 : 0;
-  const total = subtotal - discount;
+  // Volume discount: 3+ items = 10% off (per-unit rounding matches Stripe)
+  const { discount, total } = cartTotals(items, count);
 
   return (
     <div className="min-h-dvh bg-warm-white text-navy">

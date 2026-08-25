@@ -4,6 +4,7 @@ import { useState } from "react";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { useCart } from "@/lib/cart";
+import { cartTotals } from "@/lib/pricing";
 import { createStripeCheckout } from "@/lib/checkout.functions";
 
 export const Route = createFileRoute("/checkout")({
@@ -34,8 +35,7 @@ function CheckoutPage() {
     return <Outlet />;
   }
 
-  const discount = count >= 3 ? subtotal * 0.1 : 0;
-  const total = subtotal - discount;
+  const { discount, total } = cartTotals(items, count);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
