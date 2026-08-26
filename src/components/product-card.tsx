@@ -53,12 +53,8 @@ export function ProductCard({ product }: { product: Product }) {
         <h3 className="mb-2 font-display text-lg sm:text-xl font-extrabold leading-tight text-navy group-hover:text-ocean">
           {product.title}
         </h3>
-        <div className="mb-4 flex items-center gap-2 text-xs text-navy/60 font-medium">
+        <div className="mb-4 text-xs text-navy/60 font-medium">
           <span>📄 {product.pages} pages</span>
-          <span>·</span>
-          <span>
-            ⭐ {product.rating.toFixed(1)} ({product.reviews})
-          </span>
         </div>
         <div className="mt-auto flex items-center justify-between">
           <div className="flex flex-col">

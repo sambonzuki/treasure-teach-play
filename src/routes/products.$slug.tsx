@@ -135,11 +135,6 @@ function ProductPage() {
             <h1 className="mt-5 font-display text-4xl sm:text-5xl font-extrabold text-navy leading-tight">
               {product.title}
             </h1>
-            <div className="mt-3 flex items-center gap-3 text-sm">
-              <span className="text-gold text-lg">★★★★★</span>
-              <span className="font-bold">{product.rating.toFixed(1)}</span>
-              <span className="text-navy/50">({product.reviews} reviews)</span>
-            </div>
             <p className="mt-5 text-lg leading-relaxed text-navy/75">{product.description}</p>
 
             <div className="mt-6 flex items-baseline gap-3">

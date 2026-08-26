@@ -18,8 +18,6 @@ export type Product = {
   badge?: "Best Seller" | "New" | "Sale" | "Bundle" | "Teacher Favourite";
   image: string;
   images: string[];
-  rating: number;
-  reviews: number;
   skills: string[];
   description: string;
 };
@@ -73,8 +71,6 @@ const productData: ProductData[] = [
     price: FULL,
     salePrice: NOW,
     badge: "Best Seller",
-    rating: 5.0,
-    reviews: 24,
     skills: [
       "2, 3, 4, 5, 8 & 10 times tables",
       "Mazes, codes & logic puzzles",
@@ -99,8 +95,6 @@ const productData: ProductData[] = [
     price: FULL,
     salePrice: NOW,
     badge: "New",
-    rating: 5.0,
-    reviews: 11,
     skills: [
       "2, 3, 4, 5, 8 & 10 times tables",
       "Mazes, codes & logic puzzles",
@@ -125,8 +119,6 @@ const productData: ProductData[] = [
     price: FULL,
     salePrice: NOW,
     badge: "New",
-    rating: 5.0,
-    reviews: 9,
     skills: [
       "2, 3, 4, 5, 8 & 10 times tables",
       "Mazes, codes & logic puzzles",
@@ -152,8 +144,6 @@ const productData: ProductData[] = [
     pages: 32,
     price: FULL,
     salePrice: NOW,
-    rating: 5.0,
-    reviews: 7,
     skills: [
       "Place value to 1000",
       "Column addition & subtraction",
@@ -178,8 +168,6 @@ const productData: ProductData[] = [
     price: FULL,
     salePrice: NOW,
     badge: "New",
-    rating: 5.0,
-    reviews: 6,
     skills: [
       "Place value to 1000",
       "Column addition & subtraction",
@@ -204,8 +192,6 @@ const productData: ProductData[] = [
     price: FULL,
     salePrice: NOW,
     badge: "New",
-    rating: 5.0,
-    reviews: 5,
     skills: [
       "Place value to 1000",
       "Column addition & subtraction",
@@ -231,8 +217,6 @@ const productData: ProductData[] = [
     pages: 32,
     price: FULL,
     salePrice: NOW,
-    rating: 5.0,
-    reviews: 8,
     skills: [
       "6, 7, 9, 11 & 12 times tables",
       "Factor pairs & multiples",
@@ -257,8 +241,6 @@ const productData: ProductData[] = [
     price: FULL,
     salePrice: NOW,
     badge: "New",
-    rating: 5.0,
-    reviews: 6,
     skills: [
       "6, 7, 9, 11 & 12 times tables",
       "Factor pairs & multiples",
@@ -283,8 +265,6 @@ const productData: ProductData[] = [
     price: FULL,
     salePrice: NOW,
     badge: "New",
-    rating: 5.0,
-    reviews: 5,
     skills: [
       "6, 7, 9, 11 & 12 times tables",
       "Factor pairs & multiples",
@@ -310,8 +290,6 @@ const productData: ProductData[] = [
     pages: 32,
     price: FULL,
     salePrice: NOW,
-    rating: 5.0,
-    reviews: 10,
     skills: [
       "All times tables to 12 × 12",
       "Factor pairs & commutativity",
@@ -336,8 +314,6 @@ const productData: ProductData[] = [
     price: FULL,
     salePrice: NOW,
     badge: "New",
-    rating: 5.0,
-    reviews: 7,
     skills: [
       "All times tables to 12 × 12",
       "Factor pairs & commutativity",
@@ -362,8 +338,6 @@ const productData: ProductData[] = [
     price: FULL,
     salePrice: NOW,
     badge: "New",
-    rating: 5.0,
-    reviews: 6,
     skills: [
       "All times tables to 12 × 12",
       "Factor pairs & commutativity",
@@ -389,8 +363,6 @@ const productData: ProductData[] = [
     pages: 32,
     price: FULL,
     salePrice: NOW,
-    rating: 5.0,
-    reviews: 7,
     skills: [
       "Multiples & factor pairs",
       "Multiply & divide by 10, 100, 1000",
@@ -415,8 +387,6 @@ const productData: ProductData[] = [
     price: FULL,
     salePrice: NOW,
     badge: "New",
-    rating: 5.0,
-    reviews: 5,
     skills: [
       "Multiples & factor pairs",
       "Multiply & divide by 10, 100, 1000",
@@ -441,8 +411,6 @@ const productData: ProductData[] = [
     price: FULL,
     salePrice: NOW,
     badge: "New",
-    rating: 5.0,
-    reviews: 5,
     skills: [
       "Multiples & factor pairs",
       "Multiply & divide by 10, 100, 1000",
@@ -468,8 +436,6 @@ const productData: ProductData[] = [
     pages: 32,
     price: FULL,
     salePrice: NOW,
-    rating: 5.0,
-    reviews: 6,
     skills: [
       "Factors & multiples",
       "Primes, squares, cubes & roots",
@@ -494,8 +460,6 @@ const productData: ProductData[] = [
     price: FULL,
     salePrice: NOW,
     badge: "New",
-    rating: 5.0,
-    reviews: 4,
     skills: [
       "Factors & multiples",
       "Primes, squares, cubes & roots",
@@ -520,8 +484,6 @@ const productData: ProductData[] = [
     price: FULL,
     salePrice: NOW,
     badge: "New",
-    rating: 5.0,
-    reviews: 4,
     skills: [
       "Factors & multiples",
       "Primes, squares, cubes & roots",
@@ -547,8 +509,6 @@ const productData: ProductData[] = [
     pages: 32,
     price: FULL,
     salePrice: NOW,
-    rating: 5.0,
-    reviews: 5,
     skills: [
       "Common factors & multiples",
       "Prime factorisation",
@@ -573,8 +533,6 @@ const productData: ProductData[] = [
     price: FULL,
     salePrice: NOW,
     badge: "New",
-    rating: 5.0,
-    reviews: 4,
     skills: [
       "Common factors & multiples",
       "Prime factorisation",
@@ -599,8 +557,6 @@ const productData: ProductData[] = [
     price: FULL,
     salePrice: NOW,
     badge: "New",
-    rating: 5.0,
-    reviews: 3,
     skills: [
       "Common factors & multiples",
       "Prime factorisation",

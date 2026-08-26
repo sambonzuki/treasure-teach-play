@@ -30,7 +30,7 @@ const subjects = ["All", "Multiplication", "Number"];
 const themes = ["All", "Pirate", "Unicorns", "Space"];
 const kinds = ["All", "Mystery", "Review", "Get Ahead"];
 const difficulties = ["All", "Easy", "Medium", "Challenge"];
-const sorts = ["Featured", "Price: Low to High", "Price: High to Low", "Best Rated"] as const;
+const sorts = ["Featured", "Price: Low to High", "Price: High to Low"] as const;
 
 function FilterGroup({
   label,
@@ -97,7 +97,6 @@ function ShopPage() {
       list = [...list].sort((a, b) => (a.salePrice ?? a.price) - (b.salePrice ?? b.price));
     if (sort === "Price: High to Low")
       list = [...list].sort((a, b) => (b.salePrice ?? b.price) - (a.salePrice ?? a.price));
-    if (sort === "Best Rated") list = [...list].sort((a, b) => b.rating - a.rating);
     return list;
   }, [q, age, year, subject, theme, kind, difficulty, sort]);
 
