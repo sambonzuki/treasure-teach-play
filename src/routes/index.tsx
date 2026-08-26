@@ -98,7 +98,6 @@ export default function Home() {
                 <span className="text-gold text-lg">★★★★★</span>
                 <span className="font-bold">4.9/5</span>
               </div>
-              <span>Trusted by 12,000+ families &amp; teachers</span>
             </div>
           </div>
 
