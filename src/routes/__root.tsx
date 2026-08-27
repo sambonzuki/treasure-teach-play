@@ -90,6 +90,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
+    scripts: [
+      {
+        type: "text/javascript",
+        src: "https://analytics.day.ag/script.js",
+        defer: true,
+        "data-website-id": "60d54e21-cc59-4dc6-9a51-8370a001ea4f",
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
