@@ -224,6 +224,10 @@ async function sendGridSend(opts: {
         { type: "text/plain", value: opts.text },
         { type: "text/html", value: opts.html },
       ],
+      tracking_settings: {
+        click_tracking: { enable: false },
+        open_tracking: { enable: false },
+      },
     }),
   });
   if (!res.ok) {
