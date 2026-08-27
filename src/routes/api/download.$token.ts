@@ -67,10 +67,10 @@ export const Route = createFileRoute("/api/download/$token")({
         const title = products.find((p) => p.slug === slug)?.title ?? slug;
         return new Response(data as unknown as BodyInit, {
           headers: {
-            "content-type": "application/pdf",
+            "content-type": "application/octet-stream",
             "content-length": String(data.length),
             "content-disposition": `attachment; filename="${title.replace(/"/g, "")}.pdf"`,
-            "cache-control": "private, no-store",
+            "cache-control": "private, no-store, max-age=0",
           },
         });
       },
