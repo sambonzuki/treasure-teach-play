@@ -245,33 +245,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Reviews */}
-      <section className="px-4 sm:px-6 py-20 sm:py-24">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-12 text-center">
-            <div className="text-2xl text-gold">★★★★★</div>
-            <h2 className="mt-3 font-display text-3xl sm:text-4xl font-extrabold text-navy">Loved by thousands of families</h2>
-            <p className="mt-2 text-sm text-navy/50">Sample testimonials — real reviews will replace these as our community grows.</p>
-          </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {reviews.map((r) => (
-              <div key={r.name} className="rounded-3xl bg-white p-8 shadow-xl shadow-navy/5 card-lift">
-                <div className="mb-3 text-lg text-gold">★★★★★</div>
-                <p className="font-display text-xl leading-snug text-navy">"{r.text}"</p>
-                <div className="mt-6 flex items-center gap-3">
-                  <div className="grid size-11 place-items-center rounded-full bg-ocean text-white font-bold">
-                    {r.name.charAt(0)}
-                  </div>
-                  <div>
-                    <div className="font-bold text-navy">{r.name}</div>
-                    <div className="text-xs text-navy/50">{r.role}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
 
 
