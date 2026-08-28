@@ -77,8 +77,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Edventure Printables — Learning Through Edventure" },
       { name: "twitter:description", content: "Turn maths practice into an Edventure. Premium printable maths activities children aged 5–10 actually love." },
-      { property: "og:image", content: "https://edventureprintables.shop/og-image.jpg" },
-      { name: "twitter:image", content: "https://edventureprintables.shop/og-image.jpg" },
+      { property: "og:image", content: "https://edventureprintables.shop/og-image.png" },
+      { name: "twitter:image", content: "https://edventureprintables.shop/og-image.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
