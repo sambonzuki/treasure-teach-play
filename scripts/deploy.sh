@@ -7,7 +7,8 @@ cd "$PROJECT_ROOT"
 echo "=== Starting treasure-teach-play deployment ==="
 
 export GIT_SSH_COMMAND="ssh -i /home/ubuntu/.ssh/treasure-teach-play-deploy -o StrictHostKeyChecking=accept-new"
-git pull origin main
+git fetch origin
+git reset --hard origin/main
 
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
