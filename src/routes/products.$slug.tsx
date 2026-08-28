@@ -22,7 +22,7 @@ export const Route = createFileRoute("/products/$slug")({
         { name: "description", content: product.description },
         { property: "og:title", content: product.title },
         { property: "og:description", content: product.description },
-        { property: "og:image", content: product.image },
+        { property: "og:image", content: `https://edventureprintables.shop${product.image}` },
       ],
     };
   },
