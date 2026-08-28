@@ -77,8 +77,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Edventure Printables — Learning Through Edventure" },
       { name: "twitter:description", content: "Turn maths practice into an Edventure. Premium printable maths activities children aged 5–10 actually love." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/101662c3-3258-4aa3-8bca-e5ee7f71f055" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/101662c3-3258-4aa3-8bca-e5ee7f71f055" },
+      { property: "og:image", content: "https://edventureprintables.shop/assets/treasure-island-times-tables-mystery-DOIVKI_t.jpg" },
+      { name: "twitter:image", content: "https://edventureprintables.shop/assets/treasure-island-times-tables-mystery-DOIVKI_t.jpg" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
